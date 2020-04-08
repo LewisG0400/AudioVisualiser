@@ -44,10 +44,6 @@ public class Main extends PApplet {
        // red.draw();
     }
 
-    public void handleSlider2DEvents(GSlider2D slider, GEvent event) {
-
-    }
-
     public static void main(String[] args) {
         String[] processingArgs = {"Visualiser"};
         Main sketch = new Main();
