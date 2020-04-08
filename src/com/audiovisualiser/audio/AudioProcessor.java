@@ -18,7 +18,7 @@ public class AudioProcessor {
 
         for(int i = 0; i < inData.length; i ++) {
             outData[i] = Math.pow(d[0][i], 2) + Math.pow(d[1][i], 2);
-            outData[i] = 10 * Math.log10(outData[i]);
+            outData[i] = 10 * Math.log(outData[i]);
         }
     }
 }
