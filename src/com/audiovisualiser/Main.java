@@ -2,8 +2,13 @@ package com.audiovisualiser;
 
 import com.audiovisualiser.audio.AudioProcessor;
 import com.audiovisualiser.graphics.Visualiser;
-import processing.core.*;
 import com.audiovisualiser.audio.AudioListener;
+import com.audiovisualiser.graphics.Controls;
+import g4p_controls.G4P;
+import g4p_controls.GControlMode;
+import g4p_controls.GEvent;
+import g4p_controls.GSlider2D;
+import processing.core.*;
 
 import java.util.Arrays;
 
@@ -11,6 +16,7 @@ public class Main extends PApplet {
 
     public static AudioListener listener;
     public static Visualiser visualiser;
+    public static Controls controls;
 
     private static final int SAMPLE_RATE = 48000, SAMPLE_SIZE = 512;
     private static byte[] data;
@@ -35,6 +41,11 @@ public class Main extends PApplet {
         background(0);
 
         visualiser.render(Arrays.copyOfRange(transformedData, 0, SAMPLE_SIZE / 2));
+       // red.draw();
+    }
+
+    public void handleSlider2DEvents(GSlider2D slider, GEvent event) {
+
     }
 
     public static void main(String[] args) {
@@ -43,11 +54,15 @@ public class Main extends PApplet {
 
         listener = new AudioListener(SAMPLE_RATE, SAMPLE_SIZE);
         visualiser = new Visualiser(sketch, SAMPLE_SIZE, 128);
+        controls = new Controls(sketch, visualiser);
+
         data = new byte[SAMPLE_SIZE];
         transformedData = new double[SAMPLE_SIZE];
 
         PApplet.runSketch(processingArgs, sketch);
 
         visualiser.start();
+        controls.setupUI();
+        visualiser.setColour(127, 127, 127);
     }
 }
