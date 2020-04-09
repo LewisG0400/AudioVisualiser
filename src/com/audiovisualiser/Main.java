@@ -41,7 +41,6 @@ public class Main extends PApplet {
         background(0);
 
         visualiser.render(Arrays.copyOfRange(transformedData, 0, SAMPLE_SIZE / 2));
-       // red.draw();
     }
 
     public static void main(String[] args) {

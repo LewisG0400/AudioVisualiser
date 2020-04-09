@@ -5,7 +5,7 @@ import processing.core.PApplet;
 public class Visualiser {
     private int bands, sampleSize;
     private int step;
-    private double scaling, smoothing = 0.1;
+    private double scaling, smoothing = 0.7;
     private int r = 255, g = 255, b = 255;
 
     private PApplet parent;
@@ -76,7 +76,7 @@ public class Visualiser {
         }
 
         for(int i = 0; i < bands; i ++) {
-            parent.rect((float)(i * scaling), parent.height, (float)(scaling), (float)-data[i]);
+            parent.rect((float)(i * scaling), parent.height, (float)(scaling), (float)-plotData[i]);
         }
     }
 
